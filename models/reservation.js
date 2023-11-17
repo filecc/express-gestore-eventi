@@ -18,8 +18,6 @@ class Reservation {
     this.eventID = eventID;
   }
 
-  
-
   static getAllReservationsForAnEvent(eventID) {
     try {
       const reservations = JSON.parse(
