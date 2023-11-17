@@ -1,5 +1,16 @@
 [
     {
-        
+        "id": 1,
+        "title": "Event ONE",
+        "description": "This is the first event",
+        "date": "2019-01-01",
+        "maxSeats": 10
+    },
+    {
+        "id": 2,
+        "title": "Event TWO",
+        "description": "This is the second event",
+        "date": "2019-01-02",
+        "maxSeats": 20
     }
 ]
