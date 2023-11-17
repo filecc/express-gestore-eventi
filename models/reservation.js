@@ -95,7 +95,7 @@ class Reservation {
       reservations.push(reservation);
       fs.writeFileSync(
         path.resolve(__dirname, "../db/reservations.json"),
-        JSON.stringify(reservations)
+        JSON.stringify(reservations, null, 2)
       );
       return reservation;
     } catch (error) {

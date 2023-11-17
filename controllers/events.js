@@ -25,7 +25,8 @@ function store (req, res) {
         const isDataValid = Event.validateData(req.body);
         if(isDataValid === true){
             const {title, description, date, maxSeats} = req.body;
-            res.json(req.body);
+            const eventAdded = Event.addEvent(title, description, date, maxSeats);
+            res.json(eventAdded) 
         } else {           
             throw new CustomError(isDataValid, 400);
         }

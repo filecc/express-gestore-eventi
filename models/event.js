@@ -74,25 +74,30 @@ class Event {
   }
 
   static addEvent(event_title, event_description, event_date, event_maxSeats) {
-    const events = fs.readFileSync(
-      path.resolve(__dirname, "../db/events.json"),
-      "utf8"
-    );
-    const lastID = this.getLastID()
-
-    const newEvent = new Event(
-      lastID + 1,
-      event_title,
-      event_description,
-      event_date,
-      event_maxSeats
-    );
-    events.push(newEvent);
-    fs.writeFileSync(
-      path.resolve(__dirname, "../db/events.json"),
-      JSON.stringify(events)
-    );
-    return newEvent;
+    try {
+      const events = JSON.parse(fs.readFileSync(
+        path.resolve(__dirname, "../db/events.json"),
+        "utf8"
+      ));
+      const lastID = this.getLastID()
+  
+      const newEvent = new Event(
+        lastID + 1,
+        event_title,
+        event_description,
+        event_date,
+        event_maxSeats
+      );
+      events.push(newEvent);
+      fs.writeFileSync(
+        path.resolve(__dirname, "../db/events.json"),
+        JSON.stringify(events, null, 2)
+      );
+      return newEvent;
+    } catch (error) {
+      throw new CustomError(error.message, error.code);
+    }
+   
   }
 
   static isSeatAvailable(event_id) {
