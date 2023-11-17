@@ -64,7 +64,9 @@ class Event {
             fs.readFileSync(path.resolve(__dirname, "../db/events.json"), "utf8")
           );
           const event = events.find((event) => event.id == event_id);
-      
+          if(event == undefined){
+            return null
+          }
           return event;
     } catch (error) {
         throw new CustomError(error.message, error.code);
@@ -93,6 +95,23 @@ class Event {
     );
     return newEvent;
   }
+
+  static isSeatAvailable(event_id) {
+    try {
+        const event = this.getEvent(event_id);
+        const reservations = JSON.parse(
+            fs.readFileSync(path.resolve(__dirname, "../db/reservations.json"), "utf8")
+          );
+          const reservationsForEvent = reservations.filter((reservation) => reservation.eventID == event_id);
+          if(reservationsForEvent.length >= event.maxSeats){
+              return false
+          }
+          return true
+    } catch (error) {
+        throw new CustomError(error.message, error.code);
+    }
+  }
+
 }
 
 module.exports = Event;

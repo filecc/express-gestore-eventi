@@ -20,7 +20,7 @@ function store (req, res) {
     const eventID = req.params.event;
     const eventExist = events.find((event) => event.id == eventID);
     
-    if(eventExist){
+   
         try {
             const reservationsLastID = Reservation.getLastId();
             const newReservation = new Reservation(
@@ -35,7 +35,7 @@ function store (req, res) {
         } catch (error) {
             throw new CustomError(error.message, error.code);
         }
-    }
+    
     
 }
 
