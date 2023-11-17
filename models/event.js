@@ -56,6 +56,39 @@ class Event {
     
   }
 
+  static editEvent(event, id){
+    const dataValid = this.validateEditedData(id)
+    
+    if(dataValid === true){
+      const validation = this.validateData(event)
+      if(validation === true){
+        try {
+          const events = JSON.parse(fs.readFileSync(
+            path.resolve(__dirname, "../db/events.json"),
+            "utf8"
+          ));
+
+          const eventFound = events.findIndex((event) => event.id == id);
+          events[eventFound].title = event.title;
+          events[eventFound].description = event.description;
+          events[eventFound].date = event.date;
+          events[eventFound].maxSeats = event.maxSeats;
+          fs.writeFileSync(
+            path.resolve(__dirname, "../db/events.json"),
+            JSON.stringify(events, null, 2)
+          );
+        } catch (error) {
+          throw new CustomError(error.message, error.code);
+        }
+        return {message: `Event with id ${id} updated`, event: this.getEvent(id)}
+      }
+      return validation
+        
+    } else {
+        return dataValid
+    }
+
+  }
 
   static getEvent(event_id) {
     try {
@@ -174,6 +207,19 @@ class Event {
     
     
 
+  }
+
+  static validateEditedData(id){
+    try {
+      const events = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../db/events.json"), "utf8"));
+      const eventFound = events.find((event) => event.id == id);
+      if(eventFound == undefined){
+        throw new CustomError(`Event with id ${id} not found.`, 404);
+      }
+      return true
+    } catch (error) {
+      throw new CustomError(error.message, error.code);
+    }
   }
 
 

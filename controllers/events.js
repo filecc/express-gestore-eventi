@@ -39,7 +39,11 @@ function store (req, res) {
 }
 
 function update (req, res) {
-    res.json('Update');
+    const data = Event.editEvent(req.body, req.params.event);
+    if(data === false){
+        throw new CustomError(data, 404)
+    }
+    res.json(data);
 }
 
 module.exports = {
