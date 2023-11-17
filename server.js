@@ -20,6 +20,7 @@ Usiamo il model nelle funzioni scritte nei controller e facciamo in modo che tra
 Prevediamo la possibilità di passare dei filtri tramite query string alla rotta index.
 
 */
+ 
 
 
 const express = require('express');
