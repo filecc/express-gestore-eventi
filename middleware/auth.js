@@ -13,7 +13,7 @@ module.exports = function(req, res, next) {
             next()
             return
         }
-        res.json({ message: 'Token is not valido' })
+        res.json({ message: 'Token is not valid' })
        
     } catch (error) {
         return res.status(401).json({ message: 'Token is not valid' });
