@@ -18,7 +18,6 @@ class Event {
   }
 
   static getAllEvents(filters = null) {
-
     if(filters){
         
         try {
@@ -26,11 +25,11 @@ class Event {
                 path.resolve(__dirname, "../db/events.json"),
                 "utf8"
               ));
-            const availableFilter = ['title', 'date']
+            const availableFilter = ['title', 'date', 'description']
             const filtersKeys = Object.keys(filters);
             filtersKeys.forEach((key) => {
                if(availableFilter.includes(key)){
-                   events = events.filter((event) => (event[key].toLowerCase()) == filters[key].toLowerCase())
+                   events = events.filter((event) => ((event[key].toLowerCase())).includes(filters[key].toLowerCase()))
                }
             })
             if(events.length == 0){

@@ -1,16 +1,51 @@
 [
     {
         "id": 1,
-        "title": "Event ONE",
-        "description": "This is the first event",
-        "date": "2019-01-01",
+        "title": "L'amore ai tempi del colera",
+        "description": "L'evento dell'anno che esplorerà il capolavoro della letteratura del '900",
+        "date": "2023-12-01",
         "maxSeats": 10
     },
-    {
-        "id": 2,
-        "title": "Event TWO",
-        "description": "This is the second event",
-        "date": "2019-01-02",
-        "maxSeats": 20
-    }
+   {
+    "id": 2,
+    "title": "L'arte della guerra",
+    "description": "La pace è sempre la migliore opzione, ma non sempre è disponibile. Con Michele Guerrafondaio e Giovanna Guerrieri",
+    "date": "2023-12-15",
+    "maxSeats": 20
+   },
+   {
+    "id": 3,
+    "title": "Il signore degli anelli",
+    "description": "Il capolavoro di Tolkien, un viaggio nella Terra di Mezzo",
+    "date": "2023-12-31",
+    "maxSeats": 30
+   },
+   {
+    "id": 4,
+    "title": "Babbo Natale vien di notte",
+    "description": "Il Natale è alle porte, e Babbo Natale è pronto a portare i regali a tutti i bambini buoni",
+    "date": "2023-12-24",
+    "maxSeats": 40
+   },
+   {
+    "id": 5,
+    "title": "Il giro del mondo in 80 giorni",
+    "description": "Un viaggio intorno al mondo, con Phileas Fogg e Passepartout",
+    "date": "2024-01-31",
+    "maxSeats": 25
+   },
+   {
+    "id": 6,
+    "title": "Il ritratto di Dorian Gray",
+    "description": "Il capolavoro letterario di Oscar Wilde, un viaggio nella vita di Dorian Gray",
+    "date": "2024-02-28",
+    "maxSeats": 15
+   },
+   {
+    "id": 12,
+    "title": "Finché la barca va",
+    "description": "Orietta Berti in giro per il mondo: mille avventure, molte storie.",
+    "date": "2022-02-28",
+    "maxSeats": 35
+   }
 ]
