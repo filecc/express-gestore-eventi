@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col py-4">
+    <header class="py-3 border-b border-gray-300">
+        <nav class="px-4">
+            <a href="/">EVENTS API</a>
+        </nav>
+       
+    </header>
+    <main class="px-4 mt-6 flex-1">
+        <h1 class="text-3xl font-bold">How to use this service API</h1>
+        <h2 class="flex items-center gap-2">url: <code class="font-bold px-2 py-1 bg-slate-50 border border-slate-200 rounded-md">/api/events</code> </h2>
+        <section class="py-4">
+            <h2 class="text-xl font-semibold py-6">Available endpoints for EVENTS</h2>
+            <div class="flex flex-col gap-4 pt-4">
+                <article>
+                    <code class="px-2 py-1 bg-amber-50 text-amber-500 font-semibold border boder-amber-100 rounded-md">GET</code>
+                    <code class="font-bold px-2 py-1 bg-slate-50 border border-slate-200 rounded-md">/</code> 
+                    <p class="inline">- get all events</p>
+                </article>
+                <article>
+                    <code class="px-2 py-1 bg-amber-50 text-amber-500 font-semibold border boder-amber-100 rounded-md">GET</code>
+                    <code class="font-bold px-2 py-1 bg-slate-50 border border-slate-200 rounded-md">/{eventID}</code> 
+                    <p class="inline">- get an event by his <code>id</code></p>
+                </article>
+                <article>
+                    <code class="px-2 py-1 bg-blue-50 text-blue-500 font-semibold border boder-blue-100 rounded-md">POST</code>
+                    <code class="font-bold px-2 py-1 bg-slate-50 border border-slate-200 rounded-md">/</code> 
+                    <p class="inline">- add an event</p>
+                    <p class="font-semibold py-2 pl-4">Data to pass in body request for this route</p>
+                    <ul class="pl-4">
+                        <li><code>title: string</code></li>
+                        <li><code>description: string</code></li>
+                        <li><code>date: Date(YYYY-MM-DD)</code></li>
+                        <li><code>maxSeats: number (int)</code></li>
+                    </ul>
+                </article>
+                <article>
+                    <code class="px-2 py-1 bg-pink-50 text-pink-500 font-semibold border boder-pink-100 rounded-md">PUT</code>
+                    <code class="font-bold px-2 py-1 bg-slate-50 border border-slate-200 rounded-md">/{eventID}</code> 
+                    <p class="inline">- edit an event</p>
+                    <p class="font-semibold py-2 pl-4">Data to pass in body request for this route</p>
+                    <ul class="pl-4">
+                        <li><code>title: string</code></li>
+                        <li><code>description: string</code></li>
+                        <li><code>date: Date(YYYY-MM-DD)</code></li>
+                        <li><code>maxSeats: number (int)</code></li>
+                    </ul>
+                </article>
+               
+            </div>
+            
+        </section>
+        <section class="py-4">
+            <h2 class="text-xl font-semibold py-6">Available endpoints for RESERVATIONS</h2>
+            
+            <div class="flex flex-col gap-4 pt-4">
+                <article>
+                    <code class="px-2 py-1 bg-amber-50 text-amber-500 font-semibold border boder-amber-100 rounded-md">GET</code>
+                    <code class="font-bold px-2 py-1 bg-slate-50 border border-slate-200 rounded-md">/{eventID}/reservations</code> 
+                    <p class="inline">- get all reservations for an event</p>
+                </article>
+                <article>
+                    <code class="px-2 py-1 bg-blue-50 text-blue-500 font-semibold border boder-blue-100 rounded-md">POST</code>
+                    <code class="font-bold px-2 py-1 bg-slate-50 border border-slate-200 rounded-md">/{eventID}/reservations</code> 
+                    <p class="inline">- add a reservations to an event</p>
+                    <p class="font-semibold py-2 pl-4">Data to pass in body request for this route</p>
+                    <ul class="pl-4">
+                        <li><code>firstName: string</code></li>
+                        <li><code>lastName: string</code></li>
+                        <li><code>email: string</code></li>
+                    </ul>
+                </article>
+                <article>
+                    <code class="px-2 py-1 bg-red-50 text-red-500 font-semibold border boder-red-100 rounded-md">DELETE</code>
+                    <code class="font-bold px-2 py-1 bg-slate-50 border border-slate-200 rounded-md">/{eventID}/reservations/{reservationsID}</code> 
+                    <p class="inline">- delete a reservations</p>
+                </article>
+               
+            </div>
+            
+        </section>
+    </main>
+    <footer class="py-2 px-4 text-slate-500 border-t border-slate-200">
+        <a target="_blank" href="https://filecc.dev">made with &hearts; by filecc</a>
+    </footer>
+</body>
+</html>
