@@ -18,6 +18,8 @@ class Reservation {
     this.eventID = eventID;
   }
 
+  
+
   static getAllReservationsForAnEvent(eventID) {
     try {
       const reservations = JSON.parse(
@@ -97,10 +99,25 @@ class Reservation {
         path.resolve(__dirname, "../db/reservations.json"),
         JSON.stringify(reservations, null, 2)
       );
+
       return reservation;
     } catch (error) {
       throw new CustomError(error.message, error.code);
     }
+  }
+
+  static deleteReservation(reservationID) {
+    try {
+      let reservations = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../db/reservations.json"), "utf8"));
+      const reservationFound = reservations.findIndex(reservation => reservation.id == reservationID);
+      reservations.splice(reservationFound, 1);
+      fs.writeFileSync(path.resolve(__dirname, "../db/reservations.json"), JSON.stringify(reservations, null, 2));
+      
+        return `Reservation ${reservationID} deleted`
+    } catch (error) {
+      throw new CustomError(error.message, error.code);
+    }
+    
   }
 
   static validateData(reservation) {
@@ -133,8 +150,10 @@ class Reservation {
         throw new CustomError("You can't book an event that is already passed.", 400);
     }
 
-    return;
+    return true;
   }
+
+
 }
 
 module.exports = Reservation;

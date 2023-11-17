@@ -16,11 +16,9 @@ function show (req, res) {
 }
 
 function store (req, res) {
-    const events = Event.getAllEvents();
-    const eventID = req.params.event;
-    const eventExist = events.find((event) => event.id == eventID);
-    
-   
+     const eventID = req.params.event;
+    const event = Event.getEvent(eventID);
+    if(event){
         try {
             const reservationsLastID = Reservation.getLastId();
             const newReservation = new Reservation(
@@ -35,12 +33,21 @@ function store (req, res) {
         } catch (error) {
             throw new CustomError(error.message, error.code);
         }
+    }
     
     
 }
 
 function destroy (req, res) {
-    res.json('Destroy');
+    const reservationID = req.params.reservation;
+    const eventID = req.params.event;
+    const reservations = Reservation.getAllReservationsForAnEvent(eventID);
+    const reservationFound = reservations.filter(reservation => reservation.id == reservationID)
+    if(reservationFound.length === 0){
+        throw new CustomError('Reservation not found', 404);
+    }
+    const result = Reservation.deleteReservation(reservationID)
+    res.json(result);
 }
 
 module.exports = {
