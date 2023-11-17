@@ -20,7 +20,21 @@ function show (req, res) {
 }
 
 function store (req, res) {
-    res.json('Store');
+    try {
+        
+        const isDataValid = Event.validateData(req.body);
+        if(isDataValid === true){
+            const {title, description, date, maxSeats} = req.body;
+            res.json(req.body);
+        } else {           
+            throw new CustomError(isDataValid, 400);
+        }
+       
+    } catch (error) {
+        throw new CustomError(error.message, error.code);
+    }
+   
+   
 }
 
 function update (req, res) {

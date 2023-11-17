@@ -78,7 +78,7 @@ class Event {
       path.resolve(__dirname, "../db/events.json"),
       "utf8"
     );
-    const lastID = events.sort((a, b) => b.id - a.id)[0].id;
+    const lastID = this.getLastID()
 
     const newEvent = new Event(
       lastID + 1,
@@ -124,6 +124,54 @@ class Event {
       throw new CustomError(error.message, error.code);
     }
   }
+
+  static getLastID(){
+    try {
+      const events = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../db/events.json"), "utf8"));
+      return events.sort((a, b) => b.id - a.id)[0].id;
+    } catch (error) {
+      throw new CustomError(error.message, error.code);
+    }
+   
+  }
+
+  static validateData(event){
+    const { title, description, date, maxSeats } = event;
+      if(!title){
+        return 'title is required'
+      }
+      if(!description){
+        return 'description is required'
+      }
+      if(!date){
+        return 'date is required'
+      }
+      if(!maxSeats){
+        return 'maxSeats is required'
+      }
+      if(!parseInt(maxSeats) || maxSeats.includes('.') || maxSeats.includes(',')){
+        return 'maxSeats must be a integer'
+      }
+      if(maxSeats < 1){
+        return 'maxSeats must be greater than 0'
+        }
+      if(new Date(date) == 'Invalid Date' || date.split('-').length < 3){
+        return 'date must be in format YYYY-MM-DD'
+      }
+      if(date.split('-')[0].length != 4){
+        return 'date must be in format YYYY-MM-DD'
+      }
+      if(new Date(date) < new Date()){
+        return 'date must be in the future'
+      }
+
+      return true
+    
+    
+
+  }
+
+
 
 }
 
