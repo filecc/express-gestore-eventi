@@ -112,6 +112,20 @@ class Event {
     }
   }
 
+  static eventIsPassed(event_id) {
+    try {
+      const event = this.getEvent(event_id);
+      const eventDate = new Date(event.date);
+      const today = new Date();
+      if (eventDate < today) {
+        return true;
+      }
+      return false;
+    } catch (error) {
+      throw new CustomError(error.message, error.code);
+    }
+  }
+
 }
 
 module.exports = Event;

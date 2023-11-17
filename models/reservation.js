@@ -129,6 +129,9 @@ class Reservation {
     if(!Event.isSeatAvailable(reservation.eventID)){
         throw new CustomError("No more seats available for this event", 400);
     }
+    if(Event.eventIsPassed(reservation.eventID)){
+        throw new CustomError("You can't book an event that is already passed.", 400);
+    }
 
     return;
   }
