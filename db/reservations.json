@@ -1,5 +1,12 @@
 [
   {
+    "id": 1,
+    "firstName": "Mario",
+    "lastName": "Rossi",
+    "email": "mariorossi@email.com",
+    "eventID": 1
+  },
+  {
     "id": 2,
     "firstName": "Giuseppe",
     "lastName": "Verdi",
@@ -11,6 +18,13 @@
     "firstName": "Luigi",
     "lastName": "Bianchi",
     "email": "luigibianchi@email.com",
+    "eventID": 2
+  },
+  {
+    "id": 4,
+    "firstName": "Giuseppe",
+    "lastName": "Rossi",
+    "email": "giusepperossi@email.com",
     "eventID": 2
   }
 ]
