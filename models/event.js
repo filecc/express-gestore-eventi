@@ -20,7 +20,7 @@ class Event {
   static getAllEvents(filters = null) {
 
     if(filters){
-        console.log(filters)
+        
         try {
             let events = JSON.parse(fs.readFileSync(
                 path.resolve(__dirname, "../db/events.json"),
@@ -48,7 +48,7 @@ class Event {
               path.resolve(__dirname, "../db/events.json"),
               "utf8"
             ));
-            return JSON.parse(events);
+            return events;
           } catch (error) {
             throw new CustomError(error.message, error.code);
           }

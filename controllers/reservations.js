@@ -16,7 +16,27 @@ function show (req, res) {
 }
 
 function store (req, res) {
-    res.json('Store');
+    const events = Event.getAllEvents();
+    const eventID = req.params.event;
+    const eventExist = events.find((event) => event.id == eventID);
+    
+    if(eventExist){
+        try {
+            const reservationsLastID = Reservation.getLastId();
+            const newReservation = new Reservation(
+                    reservationsLastID +1,
+                    req.body.firstName,
+                    req.body.lastName,
+                    req.body.email,
+                    eventID
+            )
+            res.json(Reservation.createReservation(newReservation));
+            
+        } catch (error) {
+            throw new CustomError(error.message, error.code);
+        }
+    }
+    
 }
 
 function destroy (req, res) {

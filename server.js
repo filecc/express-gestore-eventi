@@ -27,11 +27,13 @@ const express = require('express');
 const dotenv = require('dotenv').config();
 const router = require('./routers/api');
 const errorHandler = require('./middleware/error');
+
 const app = express();
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 
 app.use('/api/events', router);
 
