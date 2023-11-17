@@ -5,6 +5,7 @@ This is a documentation for the Events API service.
 ## How to use this service API
 
 The base URL for all endpoints is `/api/events`.
+In order to use this API you need a valid API KEY to send over in Header for every request.
 
 ### Available endpoints for EVENTS
 
