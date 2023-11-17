@@ -4,6 +4,17 @@ Creiamo le seguenti rotte con relativo controller e router senza implementare le
 [GET] events/ (index)
 [POST] events/ (store)
 [PUT] events/:event (update)
+
+Milestone 2
+Creiamo il model (classe) models/event.js e prevediamo le seguenti proprietà:
+id
+title
+description
+date
+maxSeats (numero massimo di posti)
+Tramite dei metodi statici, facciamo in modo di poter leggere e salvare i dati su un file json dedicato.
+Un’istanza della classe rappresenterà un singolo evento.
+
 */
 
 
